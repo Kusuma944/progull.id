@@ -2803,12 +2803,12 @@ section,
 
 .section-title h2 {
   font-family: var(--heading-font);
-  color: #d4ffcb;
+  color: #153a0d;
   text-transform: uppercase;
 }
 
 .section-title p {
-  color: #9aa48a;
+  color: #8b9975;
 }
 
 .catalog-grid {
@@ -3050,7 +3050,7 @@ section,
 }
 
 .money.red { color: #ffb3b3; }
-.money.green { color: #b6ffb6; }
+.money.green { color: #4cda4c; }
 
 /* FORM */
 .finance-form {

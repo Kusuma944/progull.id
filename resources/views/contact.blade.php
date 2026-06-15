@@ -80,6 +80,7 @@
         <li>Pastikan spesifikasi produk sesuai sebelum membeli</li>
         <li>Pembayaran dilakukan via metode yang disepakati</li>
         <li>Pengiriman dilakukan setelah pembayaran diterima</li>
+        <li>Diskusi Hanya pada contact person resmi bukan yang lain</li>
         <li>Complain harus di sertai bukti video</li>
     </ul>
 
