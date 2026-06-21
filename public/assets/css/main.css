@@ -2791,7 +2791,7 @@ section,
    =============================== */
 
 .catalog-page {
-  background: #0f120b;
+  background: #6a7f51;
   min-height: 100vh;
   padding: 120px 0 80px;
 }
@@ -2803,23 +2803,26 @@ section,
 
 .section-title h2 {
   font-family: var(--heading-font);
-  color: #153a0d;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
 .section-title p {
-  color: #8b9975;
+  color: #ffffff;
 }
+
 
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* MAKSIMAL 3 KE SAMPING */
   gap: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 
 .product-card {
-  background: #1a1f14;
+  background: #ffffff;
   border-radius: 12px;
   padding: 20px;
   border: 1px solid rgba(255,255,255,0.08);
@@ -2844,11 +2847,13 @@ section,
 
 .product-card h3 {
   margin-top: 15px;
-  color: #e6f2d6;
+  color: #243500;
+
 }
 
 .price {
-  color: #9bdc7a;
+  color: #324927;
+  text-shadow: 2px 2px 5px #96a7a7;
   font-weight: 700;
 }
 
@@ -2997,21 +3002,26 @@ section,
   padding: 50px;
   background: #f4f6f3;
   min-height: 100vh;
+  letter-spacing: 2px;
 }
 
 .admin-dashboard h2 {
-  font-size: 28px;
+  font-size: 30px;
   margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 80px;
 }
 
 .subtitle {
-  color: #555;
+  color: #000000;
   margin-bottom: 30px;
 }
 
 /* HEADER */
 .admin-title {
   font-size: 22px;
+  color: black;
+   text-shadow: 2px 2px 5px #616161;
   letter-spacing: 2px;
 }
 
@@ -3034,14 +3044,18 @@ section,
 .admin-card {
   background: #4b5320;
   color: #fff;
-  padding: 25px;
-  border-radius: 6px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgb(97, 97, 97);
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .admin-card h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 30px;
+   text-shadow: 2px 2px 5px #515151;
+  color : #fffefc;
+  margin-bottom: 20px;
 }
 
 .money {
@@ -3121,3 +3135,47 @@ section,
 
 .finance-table .green { color: #2e7d32; }
 .finance-table .red { color: #b71c1c; }
+
+
+.tutorial-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.tutorial-card h3 {
+    margin-bottom: 10px;
+}
+
+.tutorial-gallery {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.tutorial-item {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.tutorial-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.tutorial-item h4 {
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.tutorial-item p {
+    font-size: 14px;
+    color: #666;
+}

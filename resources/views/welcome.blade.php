@@ -50,11 +50,11 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="hero" class="active">Home</a></li>
+          <li class="dropdown"><a href="about.html"></a><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="team.html">Team</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="/team.html">Team</a></li>
+              <li><a href="/testimonials.html">Testimonials</a></li>
               <li class="dropdown"><a href="#"><span>Product</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="/products">Product</a></li>
@@ -230,7 +230,7 @@
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-Belt">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-accessories">
               <img src="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Medic Pouch</h4>
@@ -250,7 +250,7 @@
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-Vest">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-more">
               <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>tandu Portable</h4>
@@ -260,22 +260,12 @@
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-Belt">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-accessories">
               <img src="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>HUge utility pouch</h4>
+                <h4>Back Pannel utility pouch</h4>
                 <p>untuk penambahan peralatan dan utilitas skala besar</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-Accessories">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>TNI malvinas Belt Hipalus</h4>
-                <p>Belt Hipalus Dengan Loreng Standar TNI</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
