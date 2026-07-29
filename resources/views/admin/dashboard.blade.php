@@ -25,9 +25,23 @@
         </div>
 
         <div class="tutorial-item">
-            <img src="{{ asset('assets/img/tutorial3.png') }}" alt="Tutorial 3">
+            <img src="{{ asset('assets/img/tutorial4.png') }}" alt="Tutorial 3">
             <h4>Langkah 3</h4>
             <p>Tambahkan laporan keuangan dan pantau saldo.</p>
+        </div>
+
+        <div class="tutorial-item">
+            <img src="{{ asset('assets/img/tutorial5.png') }}" alt="Tutorial 3">
+            <h4>Langkah 3</h4>
+            <p>Tambahkan laporan keuangan dan pantau saldo.</p>
+        </div>
+        
+        <div class="tutorial-item">
+            <img src="{{ asset('assets/img/tutorial6.png') }}" alt="Tutorial 3">
+            <h4>Langkah 3</h4>
+            <p>Tambahkan laporan keuangan dan pantau saldo.</p>
+        </div> 
+
         </div>
     </div>
 </section>
