@@ -52,6 +52,11 @@
             </div>
 
             <div class="form-group">
+                <label>Stok</label>
+                <input type="number" name="stock" min="0" max="100000" placeholder="Contoh: 25" value="{{ old('stock', $product->stock) }}" required>
+            </div>
+
+            <div class="form-group">
                 <label>Gambar Produk</label><br>
                 <img src="{{ $product->image_url }}" alt="{{ $product->name }}" style="width:80px; height:80px; object-fit:cover; border-radius:.4rem; margin-bottom:.5rem;">
                 <input type="file" name="image" accept="image/*">

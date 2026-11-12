@@ -26,6 +26,13 @@
         <li><a href="/">Home</a></li>
         <li><a href="/catalog" class="active">Catalog</a></li>
         <li><a href="/contact">Contact</a></li>
+        @auth
+          @if(auth()->user()->role === 'customer')
+            <li><a href="/cart">Keranjang</a></li>
+            <li><a href="/orders">Pesanan Saya</a></li>
+          @endif
+          <li><a href="/logout">Logout</a></li>
+        @endauth
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
@@ -42,6 +49,17 @@
       <p>Tactical & Defence Grade Equipment</p>
     </div>
 
+    @if (session('success'))
+      <div style="background:#e8f5e9;color:#1b5e20;padding:10px;border-radius:5px;margin-bottom:15px;text-align:center;">
+        {{ session('success') }}
+      </div>
+    @endif
+    @if ($errors->any())
+      <div style="background:#fdecea;color:#b3261e;padding:10px;border-radius:5px;margin-bottom:15px;text-align:center;">
+        {{ $errors->first() }}
+      </div>
+    @endif
+
     <div class="catalog-grid">
 
       @forelse($products as $product)
@@ -54,7 +72,22 @@
         @if($product->description)
           <p class="description">{{ Str::limit($product->description, 90) }}</p>
         @endif
-        <a href="/contact" class="buy-btn">Buy Now</a>
+        @if($product->stock > 0)
+          <p style="margin:0 0 8px;font-size:.85rem;">Stok: {{ $product->stock }}</p>
+          @guest
+            <a href="/login" class="buy-btn">Login untuk Membeli</a>
+          @else
+            @if(auth()->user()->role === 'customer')
+              <form action="{{ route('cart.add', $product) }}" method="POST">
+                @csrf
+                <button type="submit" class="buy-btn" style="border:none;cursor:pointer;">+ Keranjang</button>
+              </form>
+            @endif
+          @endguest
+        @else
+          <p style="margin:0 0 8px;font-size:.85rem;color:#e57373;">Stok habis</p>
+          <span class="buy-btn" style="opacity:.5;cursor:not-allowed;">Stok Habis</span>
+        @endif
       </div>
       @empty
       <p style="text-align:center; width: 310%;color:#ffffff;">Belum ada produk yang tersedia saat ini.</p>

@@ -44,6 +44,7 @@ class ProductController extends Controller
             'name'        => 'required|string|max:255',
             'description' => 'nullable|string',
             'price'       => 'required|integer|min:0',
+            'stock'       => 'required|integer|min:0|max:100000',
             'category'    => 'nullable|string|max:100',
             'image'       => 'nullable|image|max:2048', // max 2MB
             'is_active'   => 'nullable|boolean',
@@ -77,6 +78,7 @@ class ProductController extends Controller
             'name'        => 'required|string|max:255',
             'description' => 'nullable|string',
             'price'       => 'required|integer|min:0',
+            'stock'       => 'required|integer|min:0|max:100000',
             'category'    => 'nullable|string|max:100',
             'image'       => 'nullable|image|max:2048',
             'is_active'   => 'nullable|boolean',

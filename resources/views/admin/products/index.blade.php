@@ -2,8 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kelola Produk - PROGULL Admin</title>
+    <title>Kelola Pengguna - PROGULL Admin</title>
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <style>
+        .box { background:#fff; color:#111; border-radius:10px; padding:20px; margin-bottom:20px; }
+        .box table { width:100%; border-collapse:collapse; }
+        .box th, .box td { padding:10px 8px; border-bottom:1px solid #eee; text-align:left; }
+        .badge { color:#fff; padding:3px 10px; border-radius:12px; font-size:.8rem; }
+        .btn { background:#4B5320; color:#fff; border:none; border-radius:5px; padding:7px 12px; cursor:pointer; text-decoration:none; display:inline-block; }
+        .btn.danger { background:#b3261e; }
+        .alert-error { background:#fdecea; color:#b3261e; padding:10px; border-radius:5px; margin-bottom:15px; }
+        .alert-success { background:#e8f5e9; color:#1b5e20; padding:10px; border-radius:5px; margin-bottom:15px; }
+    </style>
 </head>
 <body>
 
@@ -15,84 +25,66 @@
 </header>
 
 <main class="admin-dashboard">
+    <p><a href="{{ route('admin.dashboard') }}">&larr; Dashboard</a></p>
 
-    <h2>Kelola Produk</h2>
-    <p class="subtitle">Tambah, ubah, atau hapus produk yang tampil di Katalog</p>
+    <h2>Kelola Pengguna</h2>
+    <p class="subtitle">Cari akun, blokir, atau aktifkan kembali akun customer</p>
 
-    <!-- NAV ANTAR HALAMAN ADMIN -->
-    <section class="admin-cards" style="margin-bottom: 1.5rem;">
-        <a href="{{ route('admin.dashboard') }}" class="admin-card" style="text-decoration:none; display:block;">
-            <h3>Dashboard Keuangan</h3>
-        </a>
-        <a href="{{ route('admin.products.index') }}" class="admin-card" style="text-decoration:none; display:block;">
-            <h3>Kelola Produk</h3>
-        </a>
-    </section>
-
-    @if(session('success'))
-        <div class="form-group full" style="background:#e6f4ea; padding:.75rem 1rem; border-radius:.5rem; margin-bottom:1rem; color:#2e7d32;">
-            {{ session('success') }}
-        </div>
+    @if (session('success'))
+        <div class="alert-success">{{ session('success') }}</div>
+    @endif
+    @if ($errors->any())
+        <div class="alert-error">{{ $errors->first() }}</div>
     @endif
 
-    <section class="finance-form">
-        <h3>
-            <a href="{{ route('admin.products.create') }}" class="btn-save" style="text-decoration:none; display:inline-block;">
-                + Tambah Produk Baru
-            </a>
-        </h3>
+    <section class="box">
+        <form action="{{ route('admin.users.index') }}" method="GET">
+            <input type="text" name="search" value="{{ request('search') }}" maxlength="100" placeholder="Cari nama atau email">
+            <button type="submit" class="btn">Cari</button>
+            <a href="{{ route('admin.users.index') }}" style="margin-left:8px;">Reset</a>
+        </form>
     </section>
 
-    <!-- TABEL PRODUK -->
-    <section class="finance-table">
-        <h3>Daftar Produk ({{ $products->count() }})</h3>
-
+    <section class="box">
         <table>
             <thead>
-                <tr>
-                    <th>Gambar</th>
-                    <th>Nama</th>
-                    <th>Kategori</th>
-                    <th>Harga</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
+                <tr><th>Nama</th><th>Email</th><th>Role</th><th>Status</th><th>Terdaftar</th><th>Aksi</th></tr>
             </thead>
             <tbody>
-                @forelse($products as $product)
+                @forelse ($users as $user)
                 <tr>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->role }}</td>
                     <td>
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" style="width:60px; height:60px; object-fit:cover; border-radius:.4rem;">
-                    </td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->category ?? '-' }}</td>
-                    <td class="green">{{ $product->formatted_price }}</td>
-                    <td>
-                        @if($product->is_active)
-                            <span class="green">Tampil</span>
+                        @if ($user->is_active)
+                            <span class="badge" style="background:#1b5e20">Aktif</span>
                         @else
-                            <span class="red">Disembunyikan</span>
+                            <span class="badge" style="background:#b3261e">Diblokir</span>
                         @endif
                     </td>
+                    <td>{{ $user->created_at ? $user->created_at->format('d-m-Y') : '-' }}</td>
                     <td>
-                        <a href="{{ route('admin.products.edit', $product) }}">Edit</a>
-                        &nbsp;|&nbsp;
-                        <form action="{{ route('admin.products.destroy', $product) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus produk ini?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" style="background:none; border:none; color:#b71c1c; cursor:pointer; padding:0;">Hapus</button>
-                        </form>
+                        @if ($user->role === 'customer')
+                            <form action="{{ route('admin.users.toggle', $user->id) }}" method="POST" style="display:inline;"
+                                  onsubmit="return confirm('{{ $user->is_active ? 'Blokir' : 'Aktifkan' }} akun ini?')">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="btn {{ $user->is_active ? 'danger' : '' }}">
+                                    {{ $user->is_active ? 'Blokir' : 'Aktifkan' }}
+                                </button>
+                            </form>
+                        @else
+                            -
+                        @endif
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="6" style="text-align:center;">Belum ada produk. Klik "Tambah Produk Baru" untuk mulai mengisi katalog.</td>
-                </tr>
+                <tr><td colspan="6" style="text-align:center;">Tidak ada pengguna ditemukan.</td></tr>
                 @endforelse
             </tbody>
         </table>
     </section>
-
 </main>
 
 </body>

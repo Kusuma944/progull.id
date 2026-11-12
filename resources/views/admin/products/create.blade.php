@@ -51,6 +51,11 @@
             </div>
 
             <div class="form-group">
+                <label>Stok</label>
+                <input type="number" name="stock" min="0" max="100000" placeholder="Contoh: 25" value="{{ old('stock', 0) }}" required>
+            </div>
+
+            <div class="form-group">
                 <label>Gambar Produk</label>
                 <input type="file" name="image" accept="image/*">
             </div>
